@@ -1,0 +1,4 @@
+Install Microsoft.EntityFrameworkCore.Tools, Npgsql.EntityFrameworkCore.PostgreSQL (if use postgresql)
+Create class inherits DbContext
+Add DbContext in Services
+Add ConnectionStrings in apsettings.json
