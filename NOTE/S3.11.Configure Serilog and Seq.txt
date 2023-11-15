@@ -1,0 +1,17 @@
+Install a few Serilog packages
+
+Add Serilog Configuration in Program.cs
+Remove default logging in appsettings.json
+Add Serilog configuaration in apsettings.json
+
+download and install seq server https://datalust.co/download
+
+Issues:
+Type wrong in appsettings.json therefore met the exception
+"
+This exception was originally thrown at this call stack:
+    System.Uri.CreateThis(string, bool, System.UriKind, System.UriCreationOptions)
+    System.Uri.Uri(string)
+    Serilog.Sinks.Seq.Http.SeqIngestionApiClient.SeqIngestionApiClient(string, string, System.Net.Http.HttpMessageHandler)
+    Serilog.SeqLoggerConfigurationExtensions.Seq(Serilog.Configuration.LoggerSinkConfiguration, string, Serilog.Events.LogEventLevel, int, System.TimeSpan?, string, string, long?, long?, Serilog.Core.LoggingLevelSwitch, System.Net.Http.HttpMessageHandler, long?, int, Serilog.Formatting.ITextFormatter)
+"
