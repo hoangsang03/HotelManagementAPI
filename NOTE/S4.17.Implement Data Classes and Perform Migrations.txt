@@ -1,0 +1,29 @@
+What you must know:
+1. What is Ilist in C#
+2. What is Virtual in C#
+
+What I do in this PR:
+1. turn off checking nullable value
+2. create two entities, one is Hotel and another is Country
+	1 Country can have many hotels
+
+Install dotnet-ef 
+references: https://learn.microsoft.com/en-us/ef/core/cli/dotnet#installing-the-tools
+
+What issues I met:
+1. Cannot install dotnet-ef because i have before and I must delete that folder and install 
+again with specific version (because latest version is not compatible with .net version)
+
+command: dotnet tool install --global dotnet-ef --version 7.0.14
+
+it should have same version as Microsoft.EntityFrameworkCore.Tools
+
+reference: https://github.com/dotnet/efcore/issues/15448,
+https://stackoverflow.com/questions/58764322/cannot-install-dotnet-ef-tool-on-windows-10
+
+useful command:
+list all tools: dotnet tool list --global
+install dotnet-ef: dotnet tool install --global dotnet-ef --version xxx (omit version mean install latest)
+update dotnet-ef tool: dotnet tool update --global dotnet-ef
+
+

@@ -6,8 +6,9 @@ namespace HotelManagementAPI.Data
     {
         public HotelManagementDbContext(DbContextOptions options) : base(options)
         {
-
-
         }
+
+        public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<Country> Countries { get; set; }
     }
 }
