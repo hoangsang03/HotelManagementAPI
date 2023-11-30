@@ -2,7 +2,7 @@ Install a few Serilog packages
 
 Add Serilog Configuration in Program.cs
 Remove default logging in appsettings.json
-Add Serilog configuaration in apsettings.json
+Add Serilog configuaration in appsettings.json
 
 download and install seq server https://datalust.co/download
 
@@ -15,3 +15,6 @@ This exception was originally thrown at this call stack:
     Serilog.Sinks.Seq.Http.SeqIngestionApiClient.SeqIngestionApiClient(string, string, System.Net.Http.HttpMessageHandler)
     Serilog.SeqLoggerConfigurationExtensions.Seq(Serilog.Configuration.LoggerSinkConfiguration, string, Serilog.Events.LogEventLevel, int, System.TimeSpan?, string, string, long?, long?, Serilog.Core.LoggingLevelSwitch, System.Net.Http.HttpMessageHandler, long?, int, Serilog.Formatting.ITextFormatter)
 "
+
+1. Serilog integration for ASP.NET Core
+https://github.com/serilog/serilog-aspnetcore

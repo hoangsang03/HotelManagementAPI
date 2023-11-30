@@ -1,0 +1,5 @@
+﻿1. Controller action return types in ASP.NET Core web API
+https://learn.microsoft.com/en-us/aspnet/core/web-api/action-return-types?view=aspnetcore-7.0
+
+2. ASP.NET Core Best Practices
+https://learn.microsoft.com/en-us/aspnet/core/fundamentals/best-practices?view=aspnetcore-7.0#return-ienumerablet-or-iasyncenumerablet
