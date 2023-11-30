@@ -18,3 +18,6 @@ This exception was originally thrown at this call stack:
 
 1. Serilog integration for ASP.NET Core
 https://github.com/serilog/serilog-aspnetcore
+
+2. Adding Serilog to ASP.NET Core .NET 7 & 8
+https://medium.com/@brucycenteio/adding-serilog-to-asp-net-core-net-7-8-5cba1d0dea2

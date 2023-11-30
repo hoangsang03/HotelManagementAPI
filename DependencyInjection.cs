@@ -8,8 +8,10 @@ namespace HotelManagementAPI
     {
         public static IServiceCollection AddPresentation(this IServiceCollection services, ConfigureHostBuilder host)
         {
-            services.AddScoped<ICountriesRepository, CountriesRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<ICountriesRepository, CountriesRepository>();
+            services.AddScoped<IHotelsRepository, HotelsRepository>();
+
 
             services.AddControllers();
             services.AddCors(options =>
