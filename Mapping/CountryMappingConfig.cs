@@ -9,12 +9,13 @@ namespace HotelManagementAPI.Mapping
     {
         public void Register(TypeAdapterConfig config)
         {
-            config.NewConfig<Country, CountryDto>();
-            config.NewConfig<Country, CreateCountryDto>();
-            config.NewConfig<Country, UpdateCountryDto>();
+            config.NewConfig<Country, CountryDto>().TwoWays();
+            config.NewConfig<CreateCountryDto, Country>();
+            config.NewConfig<UpdateCountryDto, Country>();
             config.NewConfig<Country, GetCountryDto>();
 
-            config.NewConfig<Hotel, HotelDto>();
+            config.NewConfig<Hotel, HotelDto>().TwoWays();
+            config.NewConfig<CreateHotelDto, Hotel>();
         }
     }
 }
