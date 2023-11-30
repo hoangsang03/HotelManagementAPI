@@ -1,4 +1,6 @@
+using HotelManagementAPI;
 using HotelManagementAPI.Data;
+using HotelManagementAPI.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -11,21 +13,9 @@ var connectionString = builder.Configuration.GetConnectionString("HotelManagemen
 builder.Services.AddDbContext<HotelManagementDbContext>(
     options => options.UseNpgsql(connectionString));
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        b => b.AllowAnyHeader()
-              .AllowAnyOrigin()
-              .AllowAnyMethod());
-});
-
-builder.Host.UseSerilog(
-    (ctx, lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
+builder.Services
+    .AddPresentation(builder.Host)
+    .AddMappings();
 
 var app = builder.Build();
 
