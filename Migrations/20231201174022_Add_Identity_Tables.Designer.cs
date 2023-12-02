@@ -3,6 +3,7 @@ using System;
 using HotelManagementAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HotelManagementAPI.Migrations
 {
     [DbContext(typeof(HotelManagementDbContext))]
-    partial class HotelManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231201174022_Add_Identity_Tables")]
+    partial class Add_Identity_Tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -300,20 +303,6 @@ namespace HotelManagementAPI.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "265aa0a6-6773-424e-a702-01efe3487384",
-                            Name = "Administator",
-                            NormalizedName = "ADMINISTATOR"
-                        },
-                        new
-                        {
-                            Id = "ee727937-5538-486e-8763-356f0cf99676",
-                            Name = "User",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
