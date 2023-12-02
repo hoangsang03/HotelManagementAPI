@@ -1,5 +1,7 @@
 ﻿using HotelManagementAPI.Contracts;
+using HotelManagementAPI.Data;
 using HotelManagementAPI.Repository;
+using Microsoft.AspNetCore.Identity;
 using Serilog;
 
 namespace HotelManagementAPI
@@ -29,6 +31,15 @@ namespace HotelManagementAPI
                 (ctx, lc) => lc.WriteTo
                            .Console().ReadFrom
                            .Configuration(ctx.Configuration));
+
+            return services;
+        }
+
+        public static IServiceCollection AddAuthorization(this IServiceCollection services)
+        {
+            services.AddIdentityCore<User>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<HotelManagementDbContext>();
 
             return services;
         }
