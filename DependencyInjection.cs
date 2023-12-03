@@ -33,10 +33,8 @@ namespace HotelManagementAPI
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
-            host.UseSerilog(
-                (ctx, lc) => lc.WriteTo
-                           .Console().ReadFrom
-                           .Configuration(ctx.Configuration));
+            host.UseSerilog((context, configuration) =>
+                                configuration.ReadFrom.Configuration(context.Configuration));
 
             return services;
         }
@@ -45,7 +43,9 @@ namespace HotelManagementAPI
         {
             services.AddIdentityCore<User>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<HotelManagementDbContext>();
+                .AddTokenProvider<DataProtectorTokenProvider<User>>("HotelManagementAPI")
+                .AddEntityFrameworkStores<HotelManagementDbContext>()
+                .AddDefaultTokenProviders();
 
             var jwtSetting = new JwtSettings();
             configuration.Bind(JwtSettings.SectionName, jwtSetting);

@@ -26,7 +26,7 @@ namespace HotelManagementAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult> Register([FromBody] RegisterRequestDto registerRequestDto)
         {
-            var errors = await _authManager.Register(registerRequestDto);
+            var errors = await _authManager.RegisterAsync(registerRequestDto);
 
             if (errors.Any())
             {
@@ -54,6 +54,23 @@ namespace HotelManagementAPI.Controllers
                 return Unauthorized();
             }
             _logger.LogInformation("User {email} Login Successfully!", loginRequestDto.Email);
+            return Ok(authResponse);
+        }
+
+        [HttpPost]
+        [Route("refreshtoken")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult> RefreshToken([FromBody] AuthResponseDto request)
+        {
+            var authResponse = await _authManager.VerifyRefreshTokenAsync(request);
+
+            if (authResponse == null)
+            {
+                return Unauthorized();
+            }
+
             return Ok(authResponse);
         }
     }

@@ -2,6 +2,7 @@
 using HotelManagementAPI.Data;
 using HotelManagementAPI.Models.Country;
 using MapsterMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace HotelManagementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CountriesController : ControllerBase
     {
         private readonly ICountriesRepository _countriesRepository;
@@ -20,6 +22,7 @@ namespace HotelManagementAPI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<GetCountryDto>>> GetCountries()
         {
             List<Country> countries = await _countriesRepository.GetAllAsync();
@@ -28,6 +31,7 @@ namespace HotelManagementAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<CountryDto>> GetCountry(int id)
         {
             var country = await _countriesRepository.GetDetails(id);
@@ -78,6 +82,7 @@ namespace HotelManagementAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administator")]
         public async Task<ActionResult<CountryDto>> PostCountry(CreateCountryDto createCountryDto)
         {
             Country country = _mapper.Map<Country>(createCountryDto);

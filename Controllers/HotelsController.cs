@@ -2,6 +2,7 @@
 using HotelManagementAPI.Data;
 using HotelManagementAPI.Models.Hotel;
 using MapsterMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace HotelManagementAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HotelsController : ControllerBase
     {
         private readonly IHotelsRepository _hotelsRepository;
@@ -21,6 +23,7 @@ namespace HotelManagementAPI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<HotelDto>>> GetHotels()
         {
             List<Hotel> hotels = await _hotelsRepository.GetAllAsync();
@@ -29,6 +32,7 @@ namespace HotelManagementAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<HotelDto>> GetHotel(int id)
         {
             var hotel = await _hotelsRepository.GetAsync(id);
