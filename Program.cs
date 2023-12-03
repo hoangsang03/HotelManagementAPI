@@ -15,7 +15,8 @@ builder.Services.AddDbContext<HotelManagementDbContext>(
 
 builder.Services
     .AddPresentation(builder.Host)
-    .AddMappings();
+    .AddMappings()
+    .AddAuthen(builder.Configuration);
 
 var app = builder.Build();
 
