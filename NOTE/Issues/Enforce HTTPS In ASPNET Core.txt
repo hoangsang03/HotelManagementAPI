@@ -1,0 +1,38 @@
+﻿Issue Description:
+the statement "Failed to determine the https port for redirect." showed in log warning
+Add this code block in program.cs:
+
+builder.Services.AddHsts(options =>
+{
+    options.Preload = true;
+    options.IncludeSubDomains = true;
+    options.MaxAge = TimeSpan.FromDays(60);
+    options.ExcludedHosts.Add("example.com");
+    options.ExcludedHosts.Add("www.example.com");
+});
+
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
+    options.HttpsPort = 7048;
+});
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+
+PS C:\Users\ACER\Documents\GitHub\HotelManagementAPI> dotnet dev-certs https --trust
+Trusting the HTTPS development certificate was requested. A confirmation prompt will be displayed if the certificate was not previously trusted. Click yes on the prompt to trust the certificate.
+Successfully trusted the existing HTTPS certificate.
+
+in launchSetting.json the applicationUrl should have both http and https
+"applicationUrl": "http://localhost:5266;https://localhost:7048",
+
+when using postman, please make sure that you enabled "Automatically follow redirects" in
+General -> Header
+
+references: 
+1. Enforce HTTPS in ASP.NET Core
+https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-8.0&tabs=visual-studio%2Clinux-ubuntu
