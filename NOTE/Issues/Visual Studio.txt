@@ -1,0 +1,2 @@
+﻿1. How to fix "The analyzer assembly references version '4.7.0.0' of the compiler, which is newer than the currently running version '4.6.0.0'."
+https://stackoverflow.com/questions/76740942/how-to-fix-the-analyzer-assembly-references-version-4-7-0-0-of-the-compiler

@@ -1,6 +1,6 @@
+using HotelManagement.API.Core.Mapping;
 using HotelManagementAPI;
 using HotelManagementAPI.Data;
-using HotelManagementAPI.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Net;
