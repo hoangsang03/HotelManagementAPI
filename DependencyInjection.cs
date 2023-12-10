@@ -1,4 +1,5 @@
-﻿using HotelManagementAPI.Contracts;
+﻿using HotelManagement.API.Core.Repository;
+using HotelManagementAPI.Contracts;
 using HotelManagementAPI.Data;
 using HotelManagementAPI.Models.Authentication;
 using HotelManagementAPI.Repository;

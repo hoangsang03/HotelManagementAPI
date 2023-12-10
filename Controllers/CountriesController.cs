@@ -1,4 +1,5 @@
-﻿using HotelManagementAPI.Contracts;
+﻿using HotelManagement.Data.Data;
+using HotelManagementAPI.Contracts;
 using HotelManagementAPI.Data;
 using HotelManagementAPI.Models.Country;
 using MapsterMapper;
