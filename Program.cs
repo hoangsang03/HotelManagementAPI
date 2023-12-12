@@ -1,5 +1,6 @@
+using HotelManagement.API;
 using HotelManagement.API.Core.Mapping;
-using HotelManagementAPI;
+using HotelManagement.API.Core.Middleware;
 using HotelManagementAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -17,7 +18,8 @@ builder.Services.AddDbContext<HotelManagementDbContext>(
 builder.Services
     .AddPresentation(builder.Host)
     .AddMappings()
-    .AddAuthen(builder.Configuration);
+    .AddAuthen(builder.Configuration)
+    .AddMiddlewareServices();
 
 builder.Services.AddHsts(options =>
 {
@@ -47,6 +49,9 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
     app.UseHsts();
 }
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<LoggingMiddleware>();
 
 app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();

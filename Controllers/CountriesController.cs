@@ -1,4 +1,5 @@
-﻿using HotelManagement.Data.Data;
+﻿using HotelManagement.API.Core.Exceptions;
+using HotelManagement.Data.Data;
 using HotelManagementAPI.Contracts;
 using HotelManagementAPI.Data;
 using HotelManagementAPI.Models.Country;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotelManagementAPI.Controllers
+namespace HotelManagement.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -39,7 +40,7 @@ namespace HotelManagementAPI.Controllers
 
             if (country == null)
             {
-                return NotFound();
+                throw new NotFoundException(nameof(GetCountry), id);
             }
             var result = _mapper.Map<CountryDto>(country);
             return Ok(result);
