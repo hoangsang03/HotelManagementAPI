@@ -1,4 +1,5 @@
-﻿using HotelManagement.API.Core.Repository;
+﻿using HotelManagement.API.Core.Middleware;
+using HotelManagement.API.Core.Repository;
 using HotelManagementAPI.Contracts;
 using HotelManagementAPI.Data;
 using HotelManagementAPI.Models.Authentication;
@@ -10,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Text;
 
-namespace HotelManagementAPI
+namespace HotelManagement.API
 {
     public static class DependencyInjection
     {
@@ -73,6 +74,13 @@ namespace HotelManagementAPI
                 };
             });
 
+            return services;
+        }
+
+        public static IServiceCollection AddMiddlewareServices(this IServiceCollection services)
+        {
+            services.AddTransient<ExceptionHandlingMiddleware>();
+            services.AddTransient<LoggingMiddleware>();
             return services;
         }
     }

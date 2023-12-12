@@ -1,0 +1,14 @@
+﻿1. The New Global Error Handling in ASP.NET Core 8
+https://www.youtube.com/watch?v=uOEDM0c9BNI
+
+2. 3 Ways To Create Middleware In ASP.NET Core
+https://www.milanjovanovic.tech/blog/3-ways-to-create-middleware-in-asp-net-core
+
+3. Global Error Handling in ASP.NET Core Web API
+https://code-maze.com/global-error-handling-aspnetcore/
+
+4. Handle errors in ASP.NET Core
+https://learn.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-8.0
+
+5. Using the ProblemDetails Class in ASP.NET Core Web API
+https://code-maze.com/using-the-problemdetails-class-in-asp-net-core-web-api/
